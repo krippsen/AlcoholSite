@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h2>Vítej na Matchomatu</h2>
+<p>Zapaluj, nech se zapalovat a nalezni si zde svou drahou polovičku se kterou budete hořet.</p>
+
+<h3>Statistiky</h3>
+<ul>
+  <li>Počet lidí, se kterými se ještě můžeš seznámit: {{ num_of_available_matches }}</li>
+  <li>Počet lidí, se kterými jsi již v páru: {{ num_of_matches }}</li>
+</ul>
+
+<h3>Tvůj profil</h3>
+
+<article class="card" style="width: 18rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <section class="card-body">
+      <h3 class="card-title">{{ profile.get("user.name") }}</h5>
+      <ul class="card-text">
+        <li>Věk: {{ profile.get("user.age") }}</li>
+        <li>Záliby:
+            <ul>
+            {% for hobby in profile.get("user.hobbies") %}
+                <li>{{ hobby }}</li>
+            {% endfor %}
+            </ul>
+        </li>
+      </ul>
+    </section>
+</article>
+{% endblock %}
