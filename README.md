@@ -1,6 +1,8 @@
 **ACTIVATE VIRTUAL ENVIROMENT**
 
-command to terminal ``` ./Scripts/Activate.ps1 ```
+commands to terminal 
+
+``` ./Scripts/Activate.ps1 ```
 
 ```pip install flask etc.```
 
