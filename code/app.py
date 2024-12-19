@@ -11,23 +11,49 @@ logged_user = "Pepa"
 def mock_data(graph):
     tx = graph.begin()
 
-    graph.run("MATCH (n) -[r] -> () delete n, r")
-    graph.run("MATCH (n) delete n")
+    graph.run("MATCH (n) -[r] -> () DELETE n, r")
+    graph.run("MATCH (n) DELETE n")
 
-    pepa = Node("Person", name="Pepa", age=34, hobbies=["programming", "running"])
-    jana = Node("Person", name="Jana", age=30, hobbies=["cats", "running"])
-    michal = Node("Person", name="Michal", age=38, hobbies=["partying", "cats"])
-    alena = Node("Person", name="Alena", age=32, hobbies=["kids", "cats"])
-    richard = Node("Person", name="Richard", age=33, hobbies=["partying", "cats"])
+    pepa = Node("Person", name="Pepa", age=34, hobbies=["programming", "running"],
+                preferences=["Beer", "Whiskey"],
+                favorite_places=["Bar A", "Pub B"],
+                tasting_notes=["Loved the IPA at Bar A"],
+                posts=["Enjoyed the new stout!"])
+
+    jana = Node("Person", name="Jana", age=30, hobbies=["cats", "running"],
+                preferences=["Wine", "Gin"],
+                favorite_places=["Wine House"],
+                tasting_notes=["Excellent Merlot at Wine House"],
+                posts=["Had a lovely evening!"])
+
+    michal = Node("Person", name="Michal", age=38, hobbies=["partying", "cats"],
+                  preferences=["Vodka"],
+                  favorite_places=["Club X"],
+                  tasting_notes=["Great cocktails at Club X"],
+                  posts=["What a night!"])
+
+    alena = Node("Person", name="Alena", age=32, hobbies=["kids", "cats"],
+                 preferences=["Non-alcoholic"],
+                 favorite_places=["Cafe Z"],
+                 tasting_notes=["Delicious mocktails at Cafe Z"],
+                 posts=["Family time is the best."])
+
+    richard = Node("Person", name="Richard", age=33, hobbies=["partying", "cats"],
+                   preferences=["Tequila"],
+                   favorite_places=["Bar Y"],
+                   tasting_notes=["Strong shots at Bar Y"],
+                   posts=["Party never stops!"])
+
     users = [pepa, jana, michal, alena, richard]
 
-    pepovi_se_libi_jana = Relationship(pepa, "LIKES", jana)
-    jane_se_libi_pepa = Relationship(jana, "LIKES", pepa)
-    michalovi_se_libi_alena = Relationship(michal, "LIKES", alena)
-    alene_se_nelibi_michal = Relationship(alena, "DISLIKES", michal)
-    alene_se_libi_pepa = Relationship(alena, "LIKES", pepa)
-    richardovi_se_libi_alena = Relationship(richard, "LIKES", alena)
-    relationships = [pepovi_se_libi_jana, jane_se_libi_pepa, michalovi_se_libi_alena, alene_se_nelibi_michal, alene_se_libi_pepa, richardovi_se_libi_alena]
+    relationships = [
+        Relationship(pepa, "LIKES", jana),
+        Relationship(jana, "LIKES", pepa),
+        Relationship(michal, "LIKES", alena),
+        Relationship(alena, "DISLIKES", michal),
+        Relationship(alena, "LIKES", pepa),
+        Relationship(richard, "LIKES", alena)
+    ]
 
     for user in users:
         graph.create(user)
@@ -47,7 +73,9 @@ def get_logged_user_profile(graph, username):
     return graph.run(f"""
         MATCH (user:Person)
         WHERE user.name = '{username}'
-        RETURN user.name, user.age, user.hobbies
+        RETURN user.name, user.age, user.hobbies,
+               user.preferences, user.favorite_places,
+               user.tasting_notes, user.posts
     """).data()[0]
     
             
@@ -111,6 +139,27 @@ def search():
             new_relationship = Relationship(user_node, "DISLIKES", friend_node)
         graph.create(new_relationship)
         return redirect("/search")
+
+
+@app.route("/profile/edit", methods=["GET", "POST"])
+def edit_profile():
+    if request.method == "POST":
+        preferences = request.form.getlist("preferences")
+        favorite_places = request.form.getlist("favorite_places")
+        tasting_notes = request.form.getlist("tasting_notes")
+        posts = request.form.getlist("posts")
+        graph.run(f"""
+            MATCH (user:Person)
+            WHERE user.name = '{logged_user}'
+            SET user.preferences = {preferences},
+                user.favorite_places = {favorite_places},
+                user.tasting_notes = {tasting_notes},
+                user.posts = {posts}
+        """)
+        return redirect("/home")
+    else:
+        profile = get_logged_user_profile(graph, logged_user)
+        return render_template("edit_profile.html", profile=profile)
 
 
 if __name__ == "__main__":
