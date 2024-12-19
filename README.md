@@ -10,50 +10,42 @@ commands to terminal
 
 ```docker-compose up```
 
-
-# Sociální síť pro alkoholiky
-
-Projekt sociální sítě zaměřené na alkoholiky s využitím Python-Flask a Neo4j databáze. Součástí aplikace bude messenger a další klíčové funkcionality.
-
 ## Funkcionality
 
-### 1. Registrace a přihlášení uživatelů
-- Ukládání informací o uživatelích do databáze Neo4j (např. uživatelské jméno, email, heslo).
-- Možnost registrace přes email nebo sociální sítě.
+- **User Profiles**
+  - Možnost nastavení preferencí pro nápoje.
+  - Oblíbené podniky a poznámky z ochutnávek.
+  - Přidávání příspěvků na profil.
 
-### 2. Uživatelské profily
-- Možnost přidávat osobní informace (např. věk, záliby, preferované nápoje).
-- Profilová fotka.
+- **Feed System**
+  - Sdílení recenzí, fotografií a zážitků.
 
-### 3. Komunity a skupiny
-- Tvorba komunit zaměřených na různé druhy alkoholu nebo sdílené zájmy.
-- Členství ve skupinách.
+- **Review Systém**
+  - Hodnocení různých druhů alkoholických nápojů.
 
-### 4. Přátelé a sledování
-- Uživatelé mohou navazovat přátelství nebo sledovat ostatní uživatele.
-- Návrhy přátel na základě podobných zájmů (využití grafové databáze Neo4j pro doporučení).
+- **Integrace s Google Maps**
+  - Mapa barů, podniků a dalších míst spojených s alkoholem na uživatelském profilu.
+  - Možnost plánování návštěv podniků nebo ukládání oblíbených míst.
 
-### 5. Příspěvky a komentáře
-- Uživatelé mohou přidávat příspěvky, fotky a komentáře.
-- Lajkování a sdílení obsahu.
+- **Chat Systém**
+  - Funkce pro poslání informací o odhadovaném promile alkoholu v krvi.
 
-### 6. Messenger
-- Real-time chat mezi uživateli (např. přes WebSockets).
-- Skupinové chaty.
+- **Age Verification**
+  - Povinné ověření věku při vytváření profilu.
 
-### 7. Události a setkání
-- Možnost vytvoření a účast na událostech (např. ochutnávky nebo setkání fanoušků určitého druhu alkoholu).
-- Kalendář událostí.
+- **API Integrace**
+  - Zobrazení novinek a aktualit týkajících se alkoholu.
 
-### 8. Moderace a bezpečnost
-- Nahlášení nevhodného obsahu.
-- Ověření věku.
+- **Price Comparison**
+  - Srovnávání cen různých alkoholických nápojů.
 
----
+- **Deník Ochutnávání**
+  - Záložka pro sledování ochutnaných alkoholů.
+  - Možnost přidávat osobní hodnocení a poznámky.
+  - Volba mezi veřejným a soukromým sdílením záznamů.
 
-## Jak začít?
-1. Návrh datového modelu v Neo4j.
-2. Vytvoření základních endpointů pro registraci a přihlášení uživatelů.
-3. Postupné přidávání dalších funkcionalit (messenger, skupiny, události).
+- **Spolu užívání alkoholu**
+  - Statistky ze společních akcí
 
----
+- **Achievements and Badges**
+  - Úkoly a různé góly za splněné vypítí atd.
