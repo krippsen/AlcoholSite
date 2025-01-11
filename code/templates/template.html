@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Matchomat</title>
 </head>
 <body>
-    <header>
+    <header class="flex items-center justify-center h-[200px] bg-gray-100">
         <h1>Matchomat</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="/home">Domů</a></li>
-            <li><a href="/search">Hledej</a></li>
-            <li><a href="/matches">Shody</a></li>
-            <li><a href="/profile/edit">Uprav profil</a></li>
+    <nav class="bg-gray-200 p-4">
+        <ul class="flex space-x-4">
+            <li><a href="/home" class="text-blue-500 hover:underline">Domů</a></li>
+            <li><a href="/search" class="text-blue-500 hover:underline">Hledej</a></li>
+            <li><a href="/matches" class="text-blue-500 hover:underline">Shody</a></li>
+            <li><a href="/profile/edit" class="text-blue-500 hover:underline">Uprav profil</a></li>
         </ul>
     </nav>
-    <main>
+    <main class="p-4">
         {% block content %}{% endblock %}
     </main>
-    <footer>
+    <footer class="bg-gray-100 p-4 text-center">
         <p>Matchomat, Beránek Pavel 2023</p>
     </footer>
 </body>
