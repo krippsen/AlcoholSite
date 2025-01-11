@@ -1,60 +1,96 @@
 {% extends "template.html" %}
 
 {% block content %}
-<h2>Vítej na Matchomatu</h2>
-<p>Zapaluj, nech se zapalovat a nalezni si zde svou drahou polovičku se kterou budete hořet.</p>
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <!-- Welcome Section -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-purple-500 to-pink-500">
+                <h2 class="text-3xl font-bold text-white text-center">Vítej na Matchomatu</h2>
+                <p class="text-white text-center mt-2">Zapaluj, nech se zapalovat a nalezni si zde svou drahou polovičku se kterou budete hořet.</p>
+            </div>
+        </div>
 
-<h3>Statistiky</h3>
-<ul>
-  <li>Počet lidí, se kterými se ještě můžeš seznámit: {{ num_of_available_matches }}</li>
-  <li>Počet lidí, se kterými jsi již v páru: {{ num_of_matches }}</li>
-</ul>
+        <!-- Statistics Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105">
+                <div class="flex items-center space-x-4">
+                    <div class="p-3 bg-purple-100 rounded-full">
+                        <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Dostupné shody</p>
+                        <p class="text-2xl font-bold text-gray-800">{{ num_of_available_matches }}</p>
+                    </div>
+                </div>
+            </div>
 
-<h3>Tvůj profil</h3>
+            <div class="bg-white rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105">
+                <div class="flex items-center space-x-4">
+                    <div class="p-3 bg-pink-100 rounded-full">
+                        <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Aktuální shody</p>
+                        <p class="text-2xl font-bold text-gray-800">{{ num_of_matches }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<article class="card" style="width: 18rem;">
-    <!-- <img src="..." class="card-img-top" alt="..."> -->
-    <section class="card-body">
-        <h3 class="card-title">{{ profile.get("user.name") }}</h3>
-        <ul class="card-text">
-            <li>Věk: {{ profile.get("user.age") }}</li>
-            <li>Záliby:
-                <ul>
-                {% for hobby in profile.get("user.hobbies") %}
-                    <li>{{ hobby }}</li>
-                {% endfor %}
-                </ul>
-            </li>
-            <li>Preference:
-                <ul>
-                {% for preference in profile.get("user.preferences") %}
-                    <li>{{ preference }}</li>
-                {% endfor %}
-                </ul>
-            </li>
-            <li>Oblíbené podniky:
-                <ul>
-                {% for place in profile.get("user.favorite_places") %}
-                    <li>{{ place }}</li>
-                {% endfor %}
-                </ul>
-            </li>
-            <li>Poznámky z ochutnávek:
-                <ul>
-                {% for note in profile.get("user.tasting_notes") %}
-                    <li>{{ note }}</li>
-                {% endfor %}
-                </ul>
-            </li>
-            <li>Příspěvky:
-                <ul>
-                {% for post in profile.get("user.posts") %}
-                    <li>{{ post }}</li>
-                {% endfor %}
-                </ul>
-            </li>
-        </ul>
-    </section>
-</article>
-
+        <!-- Profile Section -->
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300">
+            <div class="p-6 bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 relative overflow-hidden">
+                <div class="absolute inset-0 bg-grid-white/[0.1] bg-[size:20px_20px]"></div>
+                <h3 class="text-3xl font-bold text-white text-center relative z-10">Tvůj profil</h3>
+            </div>
+        
+            <div class="p-8 space-y-8">
+                <div class="flex items-center space-x-6 mb-8">
+                    <div class="relative">
+                        <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg ring-4 ring-purple-500/30">
+                            <span class="text-3xl font-bold text-white">{{ profile.get("user.name")[0] }}</span>
+                        </div>
+                        <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                            {{ profile.get("user.name") }}
+                        </h4>
+                        <p class="text-gray-600 text-lg">{{ profile.get("user.age") }} let</p>
+                    </div>
+                </div>
+        
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {% for section, items in [
+                        ("Záliby", profile.get("user.hobbies")),
+                        ("Preference", profile.get("user.preferences")),
+                        ("Oblíbené podniky", profile.get("user.favorite_places")),
+                        ("Poznámky z ochutnávek", profile.get("user.tasting_notes")),
+                        ("Příspěvky", profile.get("user.posts"))
+                    ] %}
+                    <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-all duration-300">
+                        <h5 class="font-bold text-gray-800 flex items-center space-x-2 mb-4">
+                            <span class="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></span>
+                            <span>{{ section }}</span>
+                        </h5>
+                        <ul class="space-y-2">
+                            {% for item in items %}
+                            <li class="text-gray-600 flex items-center space-x-3 group hover:bg-white p-2 rounded-lg transition-all duration-300">
+                                <span class="w-1.5 h-1.5 bg-purple-500/50 rounded-full group-hover:bg-purple-500 transition-all duration-300"></span>
+                                <span class="group-hover:text-gray-800 transition-all duration-300">{{ item }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
