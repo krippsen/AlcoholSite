@@ -15,17 +15,46 @@
 <article class="card" style="width: 18rem;">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
     <section class="card-body">
-      <h3 class="card-title">{{ profile.get("user.name") }}</h5>
-      <ul class="card-text">
-        <li>UFO PORNO!!!!!!!!!!!!!!!: {{ profile.get("user.age") }}</li>
-        <li>Záliby:
-            <ul>
-            {% for hobby in profile.get("user.hobbies") %}
-                <li>{{ hobby }}</li>
-            {% endfor %}
-            </ul>
-        </li>
-      </ul>
+        <h3 class="card-title">{{ profile.get("user.name") }}</h3>
+        <ul class="card-text">
+            <li>Věk: {{ profile.get("user.age") }}</li>
+            <li>Záliby:
+                <ul>
+                {% for hobby in profile.get("user.hobbies") %}
+                    <li>{{ hobby }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+            <li>Preference:
+                <ul>
+                {% for preference in profile.get("user.preferences") %}
+                    <li>{{ preference }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+            <li>Oblíbené podniky:
+                <ul>
+                {% for place in profile.get("user.favorite_places") %}
+                    <li>{{ place }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+            <li>Poznámky z ochutnávek:
+                <ul>
+                {% for note in profile.get("user.tasting_notes") %}
+                    <li>{{ note }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+            <li>Příspěvky:
+                <ul>
+                {% for post in profile.get("user.posts") %}
+                    <li>{{ post }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+        </ul>
     </section>
 </article>
+
 {% endblock %}

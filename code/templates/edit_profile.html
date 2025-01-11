@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h2>Edit Profile</h2>
+<form action="/profile/edit" method="post">
+  <label for="preferences">Preferences:</label><br>
+  <input type="text" name="preferences" value="{{ profile.get('user.preferences')|join(', ') }}"><br>
+
+  <label for="favorite_places">Favorite Places:</label><br>
+  <input type="text" name="favorite_places" value="{{ profile.get('user.favorite_places')|join(', ') }}"><br>
+
+  <label for="tasting_notes">Tasting Notes:</label><br>
+  <input type="text" name="tasting_notes" value="{{ profile.get('user.tasting_notes')|join(', ') }}"><br>
+
+  <label for="posts">Posts:</label><br>
+  <input type="text" name="posts" value="{{ profile.get('user.posts')|join(', ') }}"><br>
+
+  <button type="submit">Save</button>
+</form>
+{% endblock %}
