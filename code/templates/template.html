@@ -4,46 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matchomat</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
-<body class="min-h-screen bg-gray-100 flex flex-col">
-    <!-- Header Section -->
-    <header class="bg-blue-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="py-6">
-                <h1 class="text-3xl font-bold tracking-tight">Matchomat</h1>
-            </div>
-        </div>
+<body>
+    <header>
+        <h1>Matchomat</h1>
     </header>
-
-    <!-- Navigation -->
-    <nav class="bg-blue-500 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-start items-center space-x-8 py-3">
-                <a href="/home" class="text-white hover:text-blue-100 transition-colors">Domů</a>
-                <a href="/search" class="text-white hover:text-blue-100 transition-colors">Hledej</a>
-                <a href="/matches" class="text-white hover:text-blue-100 transition-colors">Shody</a>
-                <a href="/profile/edit" class="text-white hover:text-blue-100 transition-colors">Uprav profil</a>
-            </div>
-        </div>
+    <nav>
+        <ul>
+            <li><a href="/home">Domů</a></li>
+            <li><a href="/search">Hledej</a></li>
+            <li><a href="/matches">Shody</a></li>
+            <li><a href="/profile/edit">Uprav profil</a></li>
+        </ul>
     </nav>
-
-    <!-- Main Content -->
-    <main class="flex-grow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="bg-white rounded-lg shadow-sm p-6">
-                {% block content %}{% endblock %}
-            </div>
-        </div>
+    <main>
+        {% block content %}{% endblock %}
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="py-4 text-center text-gray-200">
-                <p>AlcoholSite, Opičáci 2025</p>
-            </div>
-        </div>
+    <footer>
+        <p>Matchomat, Beránek Pavel 2023</p>
     </footer>
 </body>
 </html>
