@@ -1,20 +1,56 @@
 {% extends "template.html" %}
 
 {% block content %}
-<h2>Edit Profile</h2>
-<form action="/profile/edit" method="post">
-  <label for="preferences">Preferences:</label><br>
-  <input type="text" name="preferences" value="{{ profile.get('user.preferences')|join(', ') }}"><br>
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <!-- Gradient Header -->
+            <div class="p-6 bg-gradient-to-r from-purple-500 to-pink-500">
+                <h2 class="text-2xl font-bold text-white text-center">Upravit profil</h2>
+            </div>
 
-  <label for="favorite_places">Favorite Places:</label><br>
-  <input type="text" name="favorite_places" value="{{ profile.get('user.favorite_places')|join(', ') }}"><br>
+            <!-- Form Section -->
+            <div class="p-8 space-y-6">
+                <form action="/profile/edit" method="post" class="space-y-6">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="preferences" class="block text-sm font-medium text-gray-700">Preferences:</label>
+                            <input type="text" name="preferences" id="preferences" 
+                                value="{{ profile.get('user.preferences')|join(', ') }}" 
+                                class="mt-2 block w-full px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition duration-200">
+                        </div>
 
-  <label for="tasting_notes">Tasting Notes:</label><br>
-  <input type="text" name="tasting_notes" value="{{ profile.get('user.tasting_notes')|join(', ') }}"><br>
+                        <div>
+                            <label for="favorite_places" class="block text-sm font-medium text-gray-700">Oblíbená místa:</label>
+                            <input type="text" name="favorite_places" id="favorite_places" 
+                                value="{{ profile.get('user.favorite_places')|join(', ') }}" 
+                                class="mt-2 block w-full px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition duration-200">
+                        </div>
 
-  <label for="posts">Posts:</label><br>
-  <input type="text" name="posts" value="{{ profile.get('user.posts')|join(', ') }}"><br>
+                        <div>
+                            <label for="tasting_notes" class="block text-sm font-medium text-gray-700">Poznámky k chuti:</label>
+                            <input type="text" name="tasting_notes" id="tasting_notes" 
+                                value="{{ profile.get('user.tasting_notes')|join(', ') }}" 
+                                class="mt-2 block w-full px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition duration-200">
+                        </div>
 
-  <button type="submit">Save</button>
-</form>
+                        <div>
+                            <label for="posts" class="block text-sm font-medium text-gray-700">Příspěvky:</label>
+                            <input type="text" name="posts" id="posts" 
+                                value="{{ profile.get('user.posts')|join(', ') }}" 
+                                class="mt-2 block w-full px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition duration-200">
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" 
+                            class="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 font-medium">
+                            Uložit změny
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
