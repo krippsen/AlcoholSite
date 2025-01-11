@@ -144,10 +144,10 @@ def search():
 @app.route("/profile/edit", methods=["GET", "POST"])
 def edit_profile():
     if request.method == "POST":
-        preferences = request.form.getlist("preferences")
-        favorite_places = request.form.getlist("favorite_places")
-        tasting_notes = request.form.getlist("tasting_notes")
-        posts = request.form.getlist("posts")
+        preferences = [item.strip() for item in request.form.get("preferences").split(",")]
+        favorite_places = [item.strip() for item in request.form.get("favorite_places").split(",")]
+        tasting_notes = [item.strip() for item in request.form.get("tasting_notes").split(",")]
+        posts = [item.strip() for item in request.form.get("posts").split(",")]
         graph.run(f"""
             MATCH (user:Person)
             WHERE user.name = '{logged_user}'
