@@ -16,7 +16,7 @@ commands to terminal
   - Možnost nastavení preferencí pro nápoje.
   - Oblíbené podniky a poznámky z ochutnávek.
   - Přidávání příspěvků na profil. 
-  - mock me daddy
+  - mock me daddy, mama mia
 - **Feed System**
   - Sdílení recenzí, fotografií a zážitků.
 
