@@ -16,7 +16,8 @@ commands to terminal
   - Možnost nastavení preferencí pro nápoje.
   - Oblíbené podniky a poznámky z ochutnávek.
   - Přidávání příspěvků na profil.
-  - OMG
+  - OMG pls work dud
+  - what a hell
 
 - **Feed System**
   - Sdílení recenzí, fotografií a zážitků.
