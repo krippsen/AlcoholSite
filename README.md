@@ -15,7 +15,7 @@ commands to terminal
 - **User Profiles**
   - Možnost nastavení preferencí pro nápoje.
   - Oblíbené podniky a poznámky z ochutnávek.
-  - Přidávání příspěvků na profil. Otazníky
+  - Přidávání příspěvků na profil. Otazníky dogu
 
 - **Feed System**
   - Sdílení recenzí, fotografií a zážitků.
