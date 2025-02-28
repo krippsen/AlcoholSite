@@ -17,7 +17,7 @@ commands to terminal
   - Oblíbené podniky a poznámky z ochutnávek.
   - Přidávání příspěvků na profil. at least work dog
   - very meowy
-  - yaas
+  - yaas omg
 - **Feed System**
   - Sdílení recenzí, fotografií a zážitků.
 
