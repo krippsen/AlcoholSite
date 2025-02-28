@@ -18,7 +18,7 @@ commands to terminal
   - Přidávání příspěvků na profil. at least work dog
   - very meowy
   - yaas omg ok
-  - mew yikes
+  - mew yikes d
 - **Feed System**
   - Sdílení recenzí, fotografií a zážitků.
 
